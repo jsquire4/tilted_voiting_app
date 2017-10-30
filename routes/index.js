@@ -37,7 +37,6 @@ router.post('/register', function(req, res){
 
   var first = req.body.first;
   var last = req.body.last;
-  var email = req.body.email;
   var username = req.body.regusername;
   var password = req.body.regpassword;
   var confirmUserPass = req.body.confirmpassword;
@@ -46,8 +45,6 @@ router.post('/register', function(req, res){
   // VALIDATION
    
   req.checkBody('last', '* Last name is required *').notEmpty();
-  req.checkBody('email', '* Email is required *').notEmpty();
-  req.checkBody('email', '* Email is not valid *').isEmail();
   req.checkBody('regusername', '* User name is required *').notEmpty();
   req.checkBody('regpassword', '* Password is required *').notEmpty();
   req.checkBody('confirmpassword', '* Password does not match *').equals(req.body.regpassword);
@@ -67,7 +64,6 @@ router.post('/register', function(req, res){
       first: first,
       last: last,
       username: username,
-      email: email,
       password: password,
       voted: false
     });
