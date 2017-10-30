@@ -185,7 +185,22 @@ textarea {
   margin-bottom: 25px;
 }
 
-.card 
+.card {
+  margin-bottom: 15px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-header {
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+}
+
+.card-quote {
+  margin-left: 5px;
+}
 
 @media screen and (max-width: 766px){
 
