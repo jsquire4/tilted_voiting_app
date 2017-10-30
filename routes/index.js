@@ -5,14 +5,14 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 
 var Vote = require('../models/vote');
-var User = require('../models/user'); 
+var User = require('../models/user');
 
 router.get('/', ensureUnathenticated, function(req, res){
   res.render('home');
 });
 
 router.get('/vote', ensureUncastVote, function(req, res){
-  res.render('voteIndex');
+  res.render('voteIndex');  
 });
 
 router.get('/analytics', function(req, res){

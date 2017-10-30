@@ -1,3 +1,7 @@
+html {
+  background-color: #e7e7e7;
+}
+
 footer {
   position: relative;
   bottom: 0;
@@ -5,44 +9,6 @@ footer {
 
 .main-body{
   min-height: 80vh;
-}
-
-#chartContainer {
-  max-width: 1400px;
-  width: 95%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position: inherit !important;
-}
-
-.canvasjs-chart-container {
-  min-width: 300px;
-  min-height: 100px;
-  max-width: 900px;
-  max-height: 250px;
-  width: 100%;
-  height: 100%;
-}
-
-.canvasjs-chart-canvas {
-  max-width: 1200px !important;
-  max-height: 300px !important;
-  min-width: 300px !important;
-  width: 100%;
-  height: 100%;
-  position: inherit !important;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.canvasjs-chart-canvas:nth-child(2) {
-  display: none !important;
-}
-
-.canvasjs-chart-toolbar, .canvasjs-chart-credit {
-  display: none !important;
 }
 
 .footer-custom {
@@ -57,13 +23,11 @@ footer {
   margin-right: auto;
 }
 
-
 .footer-link-block {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   padding-top: 15px;
-
 }
 
 .footer-link {
@@ -88,6 +52,7 @@ footer {
   flex-direction: column;
   margin-top: 25px;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .copyright-info, .support-info {
@@ -97,3 +62,221 @@ footer {
   text-align: center;
   margin-bottom: 0;
 }
+
+@import url("https://fonts.googleapis.com/css?family=Dax:400,900");
+
+.middle {
+  width: 100%;
+  text-align: center;
+}
+
+.middle h1 {
+  font-family: "Dax", sans-serif;
+  color: black;
+}
+.middle input[type="radio"] {
+  display: none;
+}
+.middle input[type="radio"]:checked + .box {
+  background-color: #3434df;
+}
+.middle input[type="radio"]:checked + .box span {
+  color: white;
+  transform: translateY(70px);
+}
+.middle input[type="radio"]:checked + .box span:before {
+  transform: translateY(0px);
+  opacity: 1;
+}
+.middle .box {
+  width: 200px;
+  height: 200px;
+  background-color: #00008a;
+  transition: all 250ms ease;
+  will-change: transition;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-family: "Dax", sans-serif;
+  font-weight: 900;
+}
+.middle .box:active {
+  transform: translateY(10px);
+}
+.middle .box span {
+  position: absolute;
+  transform: translate(0, 60px);
+  left: 0;
+  right: 0;
+  transition: all 300ms ease;
+  font-size: 1.5em;
+  user-select: none;
+  color: #fff;
+}
+.middle .box span:before {
+  font-size: 1.2em;
+  font-family: FontAwesome;
+  display: block;
+  transform: translateY(-80px);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: white;
+}
+.middle .front-end span:before {
+  content: "\f164";
+}
+.middle .back-end span:before {
+  content: "\f119";
+}
+.middle p {
+  color: #fff;
+  font-family: "Dax", sans-serif;
+  font-weight: 400;
+}
+.middle p span:after {
+  content: "\f0e7";
+  font-family: FontAwesome;
+  color: yellow;
+}
+
+textarea {
+  resize: both;
+  border: 0.1em solid #ccc;
+  border-radius: 0.5em;
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+}
+
+.vote-button {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.form-label-title {
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Dax", sans-serif;
+  color: black;
+}
+
+.voting-block-main {
+  margin-top: 25px;
+}
+
+#vote-form-title {
+  margin-bottom: 30px;
+}
+
+.canvasjs-chart-toolbar, .canvasjs-chart-credit {
+  display: none !important;
+}
+
+.page-title-analytics {
+  margin-top: 25px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.card 
+
+@media screen and (max-width: 766px){
+
+  .canvasjs-chart-canvas:nth-child(2) {
+    display: none !important;
+  }
+
+  .canvasjs-chart-canvas {
+    position: inherit !important;
+  }
+
+  .canvasjs-chart-container {
+    position: inherit !important;
+  }
+
+  .flex-container-analytics {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+
+  .comments-container {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  #chart-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 767px){
+
+  .canvasjs-chart-canvas:nth-child(2) {
+    display: inline-block !important;
+  }
+
+  .canvasjs-chart-canvas {
+    position: absolute !important;
+  }
+
+  .canvasjs-chart-container {
+    position: relative !important;
+  }
+
+  .flex-container-analytics {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .comments-container {
+    width: 40%;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  #chart-container {
+    width: 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

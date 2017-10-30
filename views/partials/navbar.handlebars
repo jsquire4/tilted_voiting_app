@@ -6,19 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       {{#if user}}
-        {{#if user.voted}}
-        {{else}}
-          <li class="nav-item">
-            <a class="nav-link" href="/vote">Vote</a>
-          </li>
-        {{/if}}
-        <li class = "nav-item">
+        <li id = "logout-link" class = "nav-item">
           <a class = "nav-link" href="/logout">Logout</a>
         </li>
       {{else}}
-        <li class = "nav-item">
-          <a class = "nav-link" href ="/">Home</a>
-        </li>
       {{/if}}
     </ul>
   </div>

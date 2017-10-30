@@ -1,20 +1,59 @@
 <div class = "voting-block-main">
   <form class = "vote-form" name = "voteForm" method = "post" action = "/vote">
-    <p class = "form-label-title">Please select the group with the best performance</p>
-    
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Priests">Priests</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Laurels">Laurels</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Teachers">Teachers</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Miamaids">Mia Maids</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Deacons">Deacons</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Behives">Behives</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Leaders">Leaders</br>
-    <input type = "radio" class = "vote-form-radio" name = "group" value = "Bishop">Bishop +1</br>
-    <p class = "form-label-title">Please leave your comments below</p>
-
-    <textarea class = "vote-form-text" name = "comments"></textarea> 
-
-    <button type = "submit" class = "btn btn-success">Vote!</button>
-
+    <div class="middle">
+      <h1 id = "vote-form-title">Vote for the group with the best performance!</h1>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Priests" checked/>
+        <div class="front-end box">
+          <span>Priests</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Laurels" />
+        <div class="front-end box">
+          <span>Laurels</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Teachers" />
+        <div class="front-end box">
+          <span>Teachers</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Miamaids" />
+        <div class="front-end box">
+          <span>Mia Maids</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Deacons" />
+        <div class="front-end box">
+          <span>Deacons</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Behives" />
+        <div class="front-end box">
+          <span>Behives</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Leaders" />
+        <div class="front-end box">
+          <span>Leaders</span>
+        </div>
+      </label>
+      <label>
+        <input type="radio" class = "vote-form-radio" name="group" value = "Bishop" />
+        <div class="front-end box">
+          <span>Bishop +1</span>
+        </div>
+      </label>
+    </div>
+    <h1 class = "form-label-title">And leave your comments below!</h1>
+    <textarea class = "vote-form-text" name = "comments"></textarea>
+    <button type = "submit" class = "btn btn-success vote-button">Vote!</button>
   </form>
 </div>
+
