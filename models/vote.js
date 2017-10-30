@@ -24,7 +24,7 @@ var voteSchema = new Schema({
 var Vote = module.exports = mongoose.model('Vote', voteSchema);
 
 function russianNameGenerator(){
-  var fakeNames = JSON.parse(fs.readFileSync("../russianNames.json"));
+  var fakeNames = JSON.parse(fs.readFileSync("./russianNames.json"));
   var firstnames = fakeNames[0].firstnames;
   var lastnames = fakeNames[1].lastnames;
   var firstname = firstnames[Math.floor(Math.random()*firstnames.length)].Name;
