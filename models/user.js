@@ -24,10 +24,6 @@ var userSchema = new Schema({
     type: String
   },
 
-  email: {
-    type: String
-  },
-
   voted: {
     type: Boolean,
     default: false

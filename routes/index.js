@@ -95,7 +95,7 @@ router.post('/vote', isLoggedIn, function(req, res){
   
 
   if (errors) {
-    res.render ('vote', {
+    res.render ('voteIndex', {
       errors: errors
     });
 
