@@ -1,0 +1,95 @@
+<div class="jumbotron">
+  <h1>Welcome to the Pheasant Pointe 6th Ward Annual Lip Sync!</h1>
+  <p>To ensure total accuracy in the voting process, please register or log in to continue</p>
+  <p>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#login-block">Login</button>
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#register-block">Register</button>
+  </p>
+</div>
+
+{{#if errors}}
+  {{#each errors}}
+    <div class = "alert alert-danger">
+      {{msg}}
+    </div>
+  {{/each}}
+{{/if}}
+
+
+<!-- Modal -->
+<div id = "login-block" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Login</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p>If you have already made an account log in here to vote or access the live analytics!</p>
+        <form class = "local-login" method = "post" action = "/login"> 
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter User Name" name = "username">
+          </div>
+          <div class="form-group">
+            <label for="userPass">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name = "password">
+          </div>
+          <button type = "submit" class = "btn btn-success">Login</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Modal -->
+<div id="register-block" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p>If this is your first time here fill out the form below to register</p>
+        <form class = "local-register" method = "post" action = "/register">
+          <div class="form-group">
+            <label for="first">First Name</label>
+            <input type="text" class="form-control" id="first" placeholder="Enter First Name" name = "first">
+          </div>
+          <div class="form-group">
+            <label for="last">Last Name</label>
+            <input type="text" class="form-control" id="last" placeholder="Enter User Name" name = "last">
+          </div>
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input type="text" class="form-control" id="userName" placeholder="Enter User Name" name = "regusername">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name = "email">
+          </div>
+          <div class="form-group">
+            <label for="userPass">Password</label>
+            <input type="password" class="form-control" id="userPass" placeholder="Password" name = "regpassword">
+          </div>
+          <div class="form-group">
+            <label for="confirmUserPass">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmUserPass" placeholder="Password" name = "confirmpassword">
+          </div>
+          <button type = "submit" class = "btn btn-success">Register</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

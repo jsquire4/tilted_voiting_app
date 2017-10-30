@@ -1,0 +1,82 @@
+<button id = "vote-refresh" class = "btn btn-primary">Refresh Results</button>
+
+<div id="chart-container" style="width: 100%;">
+</div>
+
+<div class = "comments-container">
+</div>
+
+<script type = "text/javascript">
+
+window.onload = function () {
+
+  var voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
+
+  function makeCommentCards(comment){
+    var commentsContainer = $(".comments-container");
+    var commentCard = $("<div class ='card'></div>");
+    var commentHeader = $("<div class = 'card-header'><p class = 'card-header-title'><b>Name:</b> " + comment.user + "</p></div>");
+    var commentBlock = $("<blockquote class = 'card-blockquote'><p class = 'card-quote'>" + comment.comment + "</p></blockquote>");
+    commentCard.append(commentHeader);
+    commentCard.append(commentBlock);
+    commentsContainer.append(commentCard);
+  }
+
+  function updateCardsAndChart(data){
+    for (var i = 0; i < data.length; i++) { 
+      makeCommentCards({user: data[i].fullname, comment: data[i].comments});
+      voteCounts[data[i].group] += 1;
+    }
+    var chart = new CanvasJS.Chart("chart-container", {
+      theme: "dark2",
+      exportFileName: "Doughnut Chart",
+      exportEnabled: false,
+      animationEnabled: false,
+      title:{
+        text: "Voting Breakdown"
+      },
+      legend:{
+        cursor: "pointer"
+      },
+      data: [{
+        type: "doughnut",
+        innerRadius: 60,
+        showInLegend: false,
+        indexLabel: "{name} - {y} votes - #percent%",
+        dataPoints: [
+          { y: voteCounts["Priests"], name: "Priests" },
+          { y: voteCounts["Laurels"], name: "Laurels" },
+          { y: voteCounts["Teachers"], name: "Teachers" },
+          { y: voteCounts["Miamaids"], name: "Mia Maids" },
+          { y: voteCounts["Deacons"], name: "Deacons" },
+          { y: voteCounts["Behives"], name: "Behives"},
+          { y: voteCounts["Leaders"], name: "Leaders" },
+          { y: voteCounts["Bishop"], name: "Bishop +1"}
+        ]
+      }]
+    });
+
+    chart.render();
+  }
+
+  function refreshVotes(){
+    voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
+    $(".comments-container").empty();
+    var allData = $.ajax({
+      type:"GET",
+      url:"/votes",
+      success: function(data){
+        updateCardsAndChart(data);
+      }
+    });
+  }
+ 
+  $("#vote-refresh").click(function(e){
+    e.preventDefault();
+    refreshVotes();
+  });
+
+  refreshVotes();
+}
+
+</script>
