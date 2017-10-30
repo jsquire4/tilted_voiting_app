@@ -39,7 +39,7 @@ function userNameGenerator(russianName){
 }
 
 function commentGenerator(){
-  var fakedComments = JSON.parse(fs.readFileSync("./fakedComments.json"));
+  var fakedComments = JSON.parse(fs.readFileSync("./fakedcomments.json"));
   var comment = fakedComments[Math.floor(Math.random()*fakedComments.length)].Comment;
   return comment;
 }
