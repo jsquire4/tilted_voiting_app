@@ -1,16 +1,24 @@
+{{#if errors}}
+  {{#each errors}}
+      <div class = "alert alert-danger">
+        {{msg}}
+      </div>
+  {{/each}}
+{{/if}}
 
-<h2 class = "page-title">Login</h2>
-
-<div class = "login-user">
-  <form class = "local-login" method = "post" action = "/login"> 
+<div class = "user-login-container">
+  <h2 class = "login-title">Login</h2>
+  <hr>
+  <form class = "user-login-form" method = "post" action = "/login">
     <div class="form-group">
-      <label for="userName">User Name</label>
+      <label for="username">User Name</label>
       <input type="text" class="form-control" id="username" placeholder="Enter User Name" name = "username">
     </div>
     <div class="form-group">
-      <label for="userPass">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password" name = "password">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter Password" name = "password">
     </div>
-    <button type = "submit" class = "btn btn-default">Login</button>
+    <button type = "submit" class = "btn btn-success login-page-button">Login</button>
   </form>
+  <h4 class = "login-title">Login to vote or to view the real time analytics!</h4>
 </div>

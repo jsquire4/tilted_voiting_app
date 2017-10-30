@@ -7,10 +7,6 @@ var mongoose = require('mongoose');
 var Vote = require('../models/vote');
 var User = require('../models/user');
 
-router.get('/favicon.ico', function(req, res) {
-    res.sendStatus(204);
-});
-
 router.get('/', ensureUnathenticated, function(req, res){
   res.render('home');
 });

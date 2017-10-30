@@ -1,14 +1,19 @@
 <h2 class = "page-title-analytics">Real Time Results!</h2>
 
 <div class = "flex-container-analytics">
+
   <div class = "comments-container">
+    <h2 class = "comments-title">Comment Feed</h2>
+    <hr>
+    <div id = "comment-card-container">
+    </div>
   </div>
   <div id="chart-container">
   </div>
 </div>
 
 <h2 class = "page-title-analytics">The current leading group is: <u>The Priests</u>!</h2>
-<button id = "vote-refresh" class = "btn btn-primary">Refresh Results</button>
+<button id = "vote-refresh" class = "btn btn-primary refresh-btn">Refresh Results</button>
 
 <script type = "text/javascript">
   window.onload = function () {
@@ -16,7 +21,7 @@
     var voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
 
     function makeCommentCards(comment){
-      var commentsContainer = $(".comments-container");
+      var commentsContainer = $("#comment-card-container");
       var commentCard = $("<div class ='card'></div>");
       var commentHeader = $("<div class = 'card-header'><p class = 'card-header-title'><b>Name:</b> " + comment.user + "</p></div>");
       var commentBlock = $("<blockquote class = 'card-blockquote'><p class = 'card-quote'>" + comment.comment + "</p></blockquote>");
@@ -36,6 +41,7 @@
         exportEnabled: false,
         animationEnabled: false,
         title:{
+          fontFamily: "Arial",
           text: "Voting Breakdown"
         },
         legend:{
@@ -64,7 +70,7 @@
 
     function refreshVotes(){
       voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
-      $(".comments-container").empty();
+      $("#comment-card-container").empty();
       var allData = $.ajax({
         type:"GET",
         url:"/votes",

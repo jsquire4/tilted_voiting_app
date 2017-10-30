@@ -1,5 +1,5 @@
 html {
-  background-color: #e7e7e7;
+  background-color: #194179;
 }
 
 footer {
@@ -186,10 +186,12 @@ textarea {
 }
 
 .card {
+  margin-top: 15px;
   margin-bottom: 15px;
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 3px 3px 1px #c9c9c9;
 }
 
 .card-header {
@@ -200,6 +202,10 @@ textarea {
 
 .card-quote {
   margin-left: 5px;
+}
+
+.comments-title {
+  text-align: center;
 }
 
 @media screen and (max-width: 766px){
@@ -224,12 +230,16 @@ textarea {
 
   .comments-container {
     width: 100%;
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: scroll;
   }
 
   #chart-container {
     width: 100%;
+  }
+
+  .info-main-block {
+    margin-left: 0;
   }
 }
 
@@ -262,27 +272,65 @@ textarea {
   #chart-container {
     width: 50%;
   }
+
+  .info-main-block {
+    margin-left: 2rem;
+  }
+}
+
+.refresh-btn {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 25px;
+}
+
+.center {
+  text-align: center; 
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-bottom: auto; 
+  margin-top: auto;
+}
+
+.hero-unit {
+  width: 100%;
+  max-width: 750px;
+}
+
+.navbar {
+  background-color: #194179;
+}
+
+.jumbotron {
+  margin-top: 25px;
 }
 
 
+.user-login-container {
+  max-width: 750px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.login-title {
+  text-align: center;
+}
 
+.login-page-button {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.home-button {
+  margin-right: 10px;
+}
 
 
 
