@@ -50,14 +50,14 @@ function fakeVote(callback){
   var fakeUser = userNameGenerator(russianName);
   var fakeComment = commentGenerator();
 
-  fakeVote = new Vote ({
+  spoofVote = new Vote ({
     username: fakeUser,
     fullname: russianName.firstname + " " + russianName.lastname,
     group: "Priests",
     comments: fakeComment,
   });
 
-  fakeVote.save(callback);
+  spoofVote.save(callback);
 }
 
 module.exports.castVote = function(vote, callback){
