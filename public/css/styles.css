@@ -231,6 +231,11 @@ textarea {
   .comments-container {
     width: 100%;
     max-height: 300px;
+    
+  }
+
+  #comment-card-container {
+    max-height: 250px;
     overflow-y: scroll;
   }
 
@@ -266,6 +271,11 @@ textarea {
   .comments-container {
     width: 40%;
     max-height: 500px;
+    
+  }
+
+  #comment-card-container {
+    max-height: 400px;
     overflow-y: scroll;
   }
 

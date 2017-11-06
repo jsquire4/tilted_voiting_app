@@ -16,23 +16,35 @@
 <button id = "vote-refresh" class = "btn btn-primary refresh-btn">Refresh Results</button>
 
 <script type = "text/javascript">
+
   window.onload = function () {
 
     var voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
+    var lastComment;
 
     function makeCommentCards(comment){
-      var commentsContainer = $("#comment-card-container");
+      var commentContainer = $("#comment-card-container");
       var commentCard = $("<div class ='card'></div>");
-      var commentHeader = $("<div class = 'card-header'><p class = 'card-header-title'><b>Name:</b> " + comment.user + "</p></div>");
+      var commentHeader = $("<div class = 'card-header'><p class = 'card-header-title'><b>Name:</b> " + comment.user + 
+         "</p><p class = 'card-header-title'><b>Voted For:</b> " + comment.vote + "</div>");
       var commentBlock = $("<blockquote class = 'card-blockquote'><p class = 'card-quote'>" + comment.comment + "</p></blockquote>");
       commentCard.append(commentHeader);
       commentCard.append(commentBlock);
-      commentsContainer.append(commentCard);
+
+      if (lastComment) {
+        commentCard.insertBefore(lastComment);
+        
+      } else {
+        commentContainer.append(commentCard);
+      }
+
+      lastComment = commentCard;
     }
 
     function updateCardsAndChart(data){
+      lastComment = false;
       for (var i = 0; i < data.length; i++) { 
-        makeCommentCards({user: data[i].fullname, comment: data[i].comments});
+        makeCommentCards({user: data[i].fullname, comment: data[i].comments, vote: data[i].group});
         voteCounts[data[i].group] += 1;
       }
       var chart = new CanvasJS.Chart("chart-container", {
