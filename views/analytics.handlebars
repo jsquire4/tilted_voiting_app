@@ -14,17 +14,22 @@
 
 <h2 class = "page-title-analytics">The current leading group is: <u>The Priests</u>!</h2>
 <button id = "vote-refresh" class = "btn btn-primary refresh-btn">Refresh Results</button>
+<button id = "vote-auto-refresh" class = "btn btn-danger refresh-btn refresh-off">Auto Refresh: OFF</button>
+
 
 <script type = "text/javascript">
-
   window.onload = function () {
 
+    var refreshButton = $("#vote-auto-refresh");
     var voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
     var lastComment;
+    var commentIds = [];
+    var refreshCount = 0;
 
     function makeCommentCards(comment){
+      var cardId = "card-" + comment.id;
       var commentContainer = $("#comment-card-container");
-      var commentCard = $("<div class ='card'></div>");
+      var commentCard = $("<div class ='card' id = '" + cardId + "'></div>");
       var commentHeader = $("<div class = 'card-header'><p class = 'card-header-title'><b>Name:</b> " + comment.user + 
          "</p><p class = 'card-header-title'><b>Voted For:</b> " + comment.vote + "</div>");
       var commentBlock = $("<blockquote class = 'card-blockquote'><p class = 'card-quote'>" + comment.comment + "</p></blockquote>");
@@ -32,21 +37,25 @@
       commentCard.append(commentBlock);
 
       if (lastComment) {
-        commentCard.insertBefore(lastComment);
-        
+        if (commentIds.indexOf(cardId) < 0) {
+          commentCard.insertBefore(lastComment);
+          commentIds.push(cardId);  
+        }
       } else {
         commentContainer.append(commentCard);
+        commentIds.push(cardId);
       }
 
       lastComment = commentCard;
     }
 
     function updateCardsAndChart(data){
-      lastComment = false;
+
       for (var i = 0; i < data.length; i++) { 
-        makeCommentCards({user: data[i].fullname, comment: data[i].comments, vote: data[i].group});
+        makeCommentCards({user: data[i].fullname, comment: data[i].comments, vote: data[i].group, id: i});
         voteCounts[data[i].group] += 1;
       }
+
       var chart = new CanvasJS.Chart("chart-container", {
         theme: "dark2",
         exportFileName: "Doughnut Chart",
@@ -82,7 +91,6 @@
 
     function refreshVotes(){
       voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
-      $("#comment-card-container").empty();
       var allData = $.ajax({
         type:"GET",
         url:"/votes",
@@ -91,7 +99,41 @@
         }
       });
     }
-   
+
+    function autoRefresh() {
+      if (refreshButton.hasClass('refresh-on')){
+        voteCounts = {"Priests": 0, "Laurels": 0, "Teachers": 0, "Miamaids": 0, "Deacons": 0, "Behives": 0, "Leaders": 0, "Bishop": 0};
+        $.ajax({
+          type: "GET",
+          url: "/votes",
+          success: function(data){
+            updateCardsAndChart(data);
+          },
+          complete: function() {
+            setTimeout(autoRefresh, 3000);
+          }
+        });
+      }   
+    }
+
+    refreshButton.click(function(e){
+      e.preventDefault();
+      if (refreshButton.hasClass('refresh-off')){
+        refreshButton.removeClass('btn-danger');
+        refreshButton.removeClass('refresh-off');
+        refreshButton.addClass('refresh-on');
+        refreshButton.addClass('btn-success');
+        refreshButton.text("Auto Refresh: ON");
+        autoRefresh();
+      } else if (refreshButton.hasClass('refresh-on')){
+        refreshButton.addClass('btn-danger');
+        refreshButton.addClass('refresh-off');
+        refreshButton.removeClass('refresh-on');
+        refreshButton.removeClass('btn-success');
+        refreshButton.text("Auto Refresh: OFF");
+      }
+    });
+
     $("#vote-refresh").click(function(e){
       e.preventDefault();
       refreshVotes();
