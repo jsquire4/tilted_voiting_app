@@ -230,12 +230,12 @@ textarea {
 
   .comments-container {
     width: 100%;
-    max-height: 300px;
+    max-height: 400px;
     
   }
 
   #comment-card-container {
-    max-height: 250px;
+    max-height: 350px;
     overflow-y: scroll;
   }
 
